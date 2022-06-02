@@ -1,17 +1,8 @@
-import { Routes, Route, Outlet} from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import "./category.style.scss"
 import Home from "./routes/home/HomeComponent"
-
-const Navigation =()=>{
-return (
-<div>
-  <div>
-    <h1>im a naviagation bar</h1>
-  </div>
-  <Outlet/>
-</div>
-   );
-};
+import Navigation from "./routes/navigation/NavigationComponent"
+import SignIn from "./routes/sign-in/SignInComponent"
 
 const Shop=()=>{
 return  <h2>shop here</h2>;
@@ -23,6 +14,7 @@ const App = () => {
       <Route path="/" element={<Navigation/>} >
          <Route index element={<Home/>} /> 
            <Route path="shop" element={<Shop/>}></Route>
+           <Route path="sign-in" element={<SignIn/>}></Route>
       </Route> 
     </Routes>
   );
