@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import FormInput from "../form-input/FormInput";
 import Button from "../button/Button.component";
+import { UserContext } from "../../context/user.context";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -15,6 +16,7 @@ const defaultValue = {
 const SignInForm = () => {
   const [signInObject, setSignInObject] = useState(defaultValue);
   const { email, password } = signInObject;
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setSignInObject(defaultValue);
@@ -29,11 +31,14 @@ const SignInForm = () => {
     e.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+
+      console.log(user, "user from sign n ");
+      setCurrentUser(user);
+
       resetFormFields();
     } catch (err) {
       switch (err.code) {
@@ -83,14 +88,14 @@ const SignInForm = () => {
           name="password"
           required
         />
+        <div className="buttons-container">
+          {" "}
+          <Button type="submit">Sign In </Button>
+          <Button type="button" onClick={logGoogleUser} buttonType="google">
+            Sign In with Google
+          </Button>
+        </div>
       </form>
-      <div className="buttons-container">
-        {" "}
-        <Button type="submit">Sign In </Button>
-        <Button type="button" onClick={logGoogleUser} buttonType="google">
-          Sign In with Google
-        </Button>
-      </div>
     </div>
   );
 };
