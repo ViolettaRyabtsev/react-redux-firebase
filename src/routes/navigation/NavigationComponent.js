@@ -3,10 +3,13 @@ import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import "./navigation.style.scss";
 import { UserContext } from "../../context/user.context";
+import { ShopContext } from "../../context/shop.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { products } = useContext(ShopContext);
   console.log(currentUser, "use context user");
+  console.log(products, "shop");
 
   const signOutHandler = async () => {
     await signOutUser();
