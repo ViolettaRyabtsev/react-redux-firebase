@@ -5,7 +5,6 @@ const Authentication = () => {
   return (
     <div className="authentication-container">
       <SignInForm />
-
       {/* <button onClick={signInWithGoogleRedirect}> Sign In with Google redirect </button> */}
       <SignUpForm />
     </div>
