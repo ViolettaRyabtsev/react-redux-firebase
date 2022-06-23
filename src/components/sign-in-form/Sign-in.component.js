@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import FormInput from "../form-input/FormInput";
-import Button from "../button/Button.component";
+import Button, { Button_Types } from "../button/Button.component";
 import { UserContext } from "../../context/user.context";
 import {
   signInWithGooglePopup,
@@ -93,7 +93,11 @@ const SignInForm = () => {
         <div className="buttons-container">
           {" "}
           <Button type="submit">Sign In </Button>
-          <Button type="button" onClick={logGoogleUser} buttonType="google">
+          <Button
+            type="button"
+            onClick={logGoogleUser}
+            buttonType={Button_Types.google}
+          >
             Sign In with Google
           </Button>
         </div>
