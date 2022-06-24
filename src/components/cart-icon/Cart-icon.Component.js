@@ -5,10 +5,12 @@ import { CartContext } from "../../context/cardDropdown.context";
 const CartIcon = () => {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
 
+  console.log(isCartOpen, setIsCartOpen);
   const toggleCardOpen = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  console.log(isCartOpen, "icon");
   return (
     <IconContainer>
       <ShoppingIcon className="shopping-icon" onClick={toggleCardOpen} />
